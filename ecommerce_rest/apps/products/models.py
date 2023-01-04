@@ -94,7 +94,7 @@ class Product(BaseModel):
     
     @_history_user.setter
     def _history_user(self, value):
-        return self.changed_by 
+        return self.changed_by
       
     
     
