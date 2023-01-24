@@ -8,10 +8,9 @@ class MeasureUnitAdmin(admin.ModelAdmin):
 class CategoryProductAdmin(admin.ModelAdmin):
    list_display = ('id', 'description')
    
-class ProductAdmin(admin.ModelAdmin):
-   list_display = ('id', 'name') 
+
 
 admin.site.register(MeasureUnit,MeasureUnitAdmin)
 admin.site.register(CategoryProduct,CategoryProductAdmin)
 admin.site.register(Indicator)
-admin.site.register(Product,ProductAdmin)
+admin.site.register(Product)
