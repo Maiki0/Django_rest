@@ -1,8 +1,7 @@
 from django.urls import path
 
 from apps.products.api.views.general_views import MeasureUnitListAPIView, IndicatorListAPIView , CategoryProductsListAPIView
-from apps.products.api.views.product_views import (ProductListCreateAPIView,ProductRetrieveUpdateDestroyAPIView 
-)
+
 
 
 urlpatterns =[
