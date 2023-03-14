@@ -1,11 +1,13 @@
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser, MultiPartParser
 
 from apps.products.api.serializers.product_serializers import ProductSerializer
 
 class ProductViewSets(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
+    parser_classes = (JSONParser, MultiPartParser,)
     
     
     def get_queryset(self, pk = None):

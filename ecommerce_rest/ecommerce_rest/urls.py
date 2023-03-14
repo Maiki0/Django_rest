@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path,include,re_path
+from django.views.static import serve
+from django.conf import settings
 from rest_framework import permissions 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -36,3 +38,9 @@ urlpatterns = [
     path('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     
 ]
+
+urlpatterns += [
+    re_path(r'^media/(?P<path>.*)$',serve,{
+        'document_root': settings.MEDIA_ROOT, 
+        }),
+    ]
