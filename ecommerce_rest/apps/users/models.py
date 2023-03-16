@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
-from simple_history.models import HistoricalRecords
+
 
 
 class UserManager(BaseUserManager):
@@ -32,7 +32,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     image = models.ImageField('Imagen de perfil', upload_to='perfil/', max_length=255, null=True, blank = True)
     is_active = models.BooleanField(default = True)
     is_staff = models.BooleanField(default = False)
-    historical = HistoricalRecords()
     objects = UserManager()
 
     class Meta:

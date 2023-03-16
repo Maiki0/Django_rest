@@ -10,7 +10,24 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         exclude =('state','created_data','modified_data','deleted_data')
+
+    def validate_measure_unit(self, value):
+        if value == '' or value == None:
+            raise serializers.ValidationError('Debes ingresar la Unidad de Medida')
+        return value
+    
+    def validate_category_product(self, value):
+        if value == '' or value == None:
+            raise serializers.ValidationError('Debes ingresar la Categoria de Productos ')
         
+    def validate(self, data):
+        if 'mesure_unit' not in data.keys():
+            raise serializers.ValidationError({'measeur_uni':'Debes ingresar Unida de Medida'})
+        
+        if 'category_product' not in data.keys():
+            raise serializers.ValidationError({'category_product ':'Debes ingresar Categoria de Productos'})
+        return data 
+    
         
     def to_representation(self, instance):
         return {

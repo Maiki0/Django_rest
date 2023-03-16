@@ -1,18 +1,27 @@
-import React from 'react'
 import './App.css';
-import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
-  const {loginWithRedirect} = useAuth0()
-
   return (
-    <div className="App">
-     <h1>Aplicacion</h1>
-     <button 
-     onClick={ ()=> loginWithRedirect() }>
-      Login
-     </button>
-      
+    <div className='login-box'>
+      <h2>Login</h2>
+      <form>
+          <div className='user-box'>
+            <input type="text"  />
+            <label >username</label>
+            
+          </div>
+          <div className='user-box'>
+            <input type="password" />
+            <label> password</label>
+          </div>
+          <div className='boton-form'>
+              <button className='submit'>Subimt</button>
+              <div className='submt'>
+                Don't have an account?
+              </div>
+          </div>
+      </form>
+
     </div>
   );
 }
