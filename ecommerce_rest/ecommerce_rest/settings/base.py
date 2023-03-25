@@ -126,11 +126,11 @@ USE_TZ = True
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    'http://127.0.0.1:8000'
 ]
 
 CORS_ORIGIN_WHITELIST=[
-    'http://localhost:3000'
+    'http://127.0.0.1:8000'
 ]
 
 SIMPLE_JWT ={

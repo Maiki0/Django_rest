@@ -39,10 +39,6 @@ class IndicatorViewSet(viewsets.GenericViewSet):
     serializer_class = IndicatorSerializer
     
     
-    ''' 
-    Hola desde unidad de medida 
-    '''
-    
     model = MeasureUnit
     serializer_class = MeasureUnitSerializer
     
@@ -50,13 +46,7 @@ class IndicatorViewSet(viewsets.GenericViewSet):
         return self.get_serializer().Meta.model.objects.filter(state=True)
     
     def list (self,request):
-        '''
-        Retorna toda las unidades de medida disponible
-        
-        
-        params.
-        name ----> nombre de la unidad de media disponible 
-        '''
+       
         
         data = self.get_queryset()
         data = self.get_serializer(data,many= True)
@@ -71,3 +61,17 @@ class IndicatorViewSet(viewsets.GenericViewSet):
 class CategoryProductsViewSet(viewsets.GenericViewSet):
     serializer_class = CategoryProductSerializer
     
+    
+    def get_queryset(self):
+        return self.get_serializer().Meta.model.objects.filter(state=True)
+    
+    def list (self,request):
+       
+        
+        data = self.get_queryset()
+        data = self.get_serializer(data,many= True)
+        return Response (data.data)
+    
+    
+    def create (self, request):
+        return Response({})

@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser, MultiPartParser
 
+from apps.base.utils import validate_files
 from apps.products.api.serializers.product_serializers import ProductSerializer
 
 class ProductViewSets(viewsets.ModelViewSet):
@@ -21,8 +22,11 @@ class ProductViewSets(viewsets.ModelViewSet):
     
     
     def create(self,request):
-        serializer = self.serializer_class(data = request.data)
-
+        # send information to seralizer
+        #print(request.data)
+        
+        data = validate_files(request.data, 'image')
+        serializer = self.serializer_class(data = data)
         if serializer.is_valid():
             serializer.save()
             return Response({'message':'Producto creado correctamente!'},status=status.HTTP_201_CREATED)
