@@ -23,21 +23,20 @@ class ProductViewSets(viewsets.ModelViewSet):
     
     def create(self,request):
         # send information to seralizer
-        #print(request.data)
-        
         data = validate_files(request.data, 'image')
         serializer = self.serializer_class(data = data)
         if serializer.is_valid():
             serializer.save()
             return Response({'message':'Producto creado correctamente!'},status=status.HTTP_201_CREATED)
-        return Response (serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        return Response ({'message':'', 'erro' : serializer.errors},status=status.HTTP_400_BAD_REQUEST)
     
     
     
     def update(self, request, pk = None):
         if self.get_queryset(pk):
             
-            product_serializer = self.serializer_class(self.get_queryset(pk),data = request.data)
+            data = validate_files(request.data,'image', True)
+            product_serializer = self.serializer_class(self.get_queryset(pk),data =data)
             if product_serializer.is_valid():
                 product_serializer.save()
                 return Response(product_serializer.data,status=status.HTTP_200_OK)

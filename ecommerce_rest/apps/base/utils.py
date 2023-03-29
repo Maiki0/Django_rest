@@ -1,4 +1,4 @@
-def validate_files(request, feild):
+def validate_files(request, field, upadte = False):
     '''
     :params
     :request: request.data
@@ -7,6 +7,10 @@ def validate_files(request, feild):
     '''
     
     request._mutable = True
-    request[feild] = None if type(request[feild]) == str else request [feild] 
+    if upadte:
+      if type(request[field]) == str: 
+          del request[field]
+    else:
+        request[field] = None if type(request[field]) == str else request [field] 
     request._mutable = False 
     return request
