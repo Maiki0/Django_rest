@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from apps.products.api.vi
+from apps.products.api.viewsets.general_views import *
 from apps.products.api.viewsets.product_viewsets import ProductViewSets
 
 router = DefaultRouter()
@@ -11,4 +11,3 @@ router.register(r'category-products', CategoryProductsViewSet, basename= 'catego
 
 urlpatterns = router.urls 
 
-from apps.products.api.viewsets.general_views import *
