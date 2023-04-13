@@ -17,6 +17,6 @@ def validate_files(request, field, upadte = False):
     return request
   
 def format_date(date):
-  date = datetime.strptime(date, '%d/%m/%y')
+  date = datetime.strptime(date, "%d/%m/%y")
   date = f"{date.year}-{date.month}-{date.day}"
   return date

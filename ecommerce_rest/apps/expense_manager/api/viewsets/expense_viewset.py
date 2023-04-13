@@ -27,7 +27,7 @@ class ExpenseViwSet(viewsets.GenericViewSet):
         if supplier:
             supplier_serilaizer = SupplierSerializer(supplier)
             return Response(supplier_serilaizer.data,status=status.HTTP_200_OK)
-        return Response({'mensaje':'No se a encotrado un Proveedor'},status=status.HTTP_404_NOT_FOUND)
+        return Response({'mensaje':'No se a encotrado un Proveedor'},status=status.HTTP_400_BAD_REQUEST)
     
     
     @action(methods=['post'], detail= False)
