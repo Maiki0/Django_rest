@@ -64,3 +64,15 @@ class Product(BaseModel):
     
     def __str__(self):
         return self.name
+
+    @property
+    def stock(self):
+        from django.db.models import Sum
+        from apps.expense_manager.models import Expense
+        
+        expense = Expense.objects.filter(
+            product = self,
+            state = True
+        ).aggregate(Sum('quantity'))
+        
+        return expense

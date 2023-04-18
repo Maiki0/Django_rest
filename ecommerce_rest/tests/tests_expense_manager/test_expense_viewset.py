@@ -2,6 +2,7 @@ from rest_framework import status
 
 from tests.test_setup import TestSetUp
 from tests.factories.expense_manager.expense_factories import SupplierFactory
+from apps.expense_manager.models import Supplier
 
 class ExpenseTestCase(TestSetUp):
     url = '/expense/expense/'
@@ -35,3 +36,14 @@ class ExpenseTestCase(TestSetUp):
         self.assertEqual(response.data['mensaje'], 'No se a encotrado un Proveedor')
         
         
+    def test_new_supplier(self):
+        supplier = SupplierFactory().build_supplier_JSON()
+        response = self.client.post(
+            self.url + 'new_suplier',
+            supplier,
+            format = 'json'
+        )
+        
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Supplier.objects.all().count(), 1)
+        self. assertEqual(response.data.suplier['ruc'], supplier.ruc)
