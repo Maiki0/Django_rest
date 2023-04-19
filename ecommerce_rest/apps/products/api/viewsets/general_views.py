@@ -58,7 +58,7 @@ class IndicatorViewSet(viewsets.GenericViewSet):
     
        
 
-class CategoryProductsViewSet(viewsets.GenericViewSet):
+'''class CategoryProductsViewSet(viewsets.GenericViewSet):
     serializer_class = CategoryProductSerializer
     
     
@@ -74,4 +74,4 @@ class CategoryProductsViewSet(viewsets.GenericViewSet):
     
     
     def create (self, request):
-        return Response({})
+        return Response({})'''
