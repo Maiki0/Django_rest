@@ -2,6 +2,8 @@ from rest_framework.routers import DefaultRouter
 from apps.products.api.viewsets.general_views import *
 from apps.products.api.viewsets.product_viewsets import ProductViewSets
 from apps. products.api.viewsets.category_product_viewswts import CategoryProductViewset
+from apps.products.api.viewsets.mesure_unitviewset import MeasureUnitViewSet
+from apps.products.api.viewsets.indicatorviewset import IndicatorViewSet
 
 router = DefaultRouter()
 
